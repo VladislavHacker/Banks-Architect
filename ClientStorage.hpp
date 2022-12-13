@@ -11,6 +11,14 @@ namespace bs {
 
       Client& GetClient(size_t index);
 
+      auto begin() {
+        return clients_.begin();
+      }
+
+      auto end() {
+        return clients_.end();
+      }
+      
       size_t Size() const;
     private:
       std::vector<Client> clients_;

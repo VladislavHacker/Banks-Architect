@@ -1,0 +1,52 @@
+[
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/main.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/main.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/main.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/PaymentSystemFacade.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/PaymentSystemFacade.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/PaymentSystemFacade.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/TransmissionManager.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/TransmissionManager.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/TransmissionManager.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/TransactionHistory.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/TransactionHistory.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/TransactionHistory.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/PercentManager.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/PercentManager.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/PercentManager.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/ClientStorage.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/ClientStorage.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/ClientStorage.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/BanksStorage.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/BanksStorage.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/BanksStorage.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/Bank.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/Bank.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/Bank.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/Client.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/Client.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/Client.cpp"
+},
+{
+  "directory": "/Users/vhdev/Arkch/Banks-Architect/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20 -o CMakeFiles/BankSystem.dir/helpers.cpp.o -c /Users/vhdev/Arkch/Banks-Architect/helpers.cpp",
+  "file": "/Users/vhdev/Arkch/Banks-Architect/helpers.cpp"
+}
+]
