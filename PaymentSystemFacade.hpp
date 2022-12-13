@@ -50,7 +50,7 @@ namespace bs {
       const std::string& bank_from, 
       size_t client_from, 
       const std::string& bank_to,
-      size_t to,
+      size_t client_to,
       int64_t value);
 
     void UndoTransfer(size_t transaction_id);

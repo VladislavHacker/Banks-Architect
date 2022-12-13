@@ -36,5 +36,30 @@ namespace bs {
     data_.GetBank(bank).FillClientData(client, address, passport);
   }
 
+  void PaymentSystemFacade::UndoTransfer(size_t transaction_id) {
+  }
+
+  void PaymentSystemFacade::MakeTransfer(
+      const std::string& bank_from, 
+      size_t client_from, 
+      const std::string& bank_to,
+      size_t client_to,
+      int64_t value) {
+  }
+
+  void PaymentSystemFacade::MakeWithdraw(
+    const std::string& bank_from, 
+    size_t account_from, 
+    int64_t amount) {
+      data_.GetBank(bank_from).GetBankAccount(account_from).Withdraw(amount);
+  }
+
+  void PaymentSystemFacade::MakeTopUp(
+    const std::string& bank_to, 
+    size_t account_to, 
+    int64_t amount) {
+      data_.GetBank(bank_to).GetBankAccount(account_to).TopUp(amount);
+  }
+
   BanksStorage& PaymentSystemFacade::GetBankStorage() { return data_; }
 }

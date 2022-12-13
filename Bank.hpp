@@ -24,7 +24,9 @@ class Bank {
 
     std::shared_ptr<BankAccount> AccountFactory(AccountType type, size_t client, size_t value);
 
-    BankAccount& GetBankAccount(size_t id); 
+    BankAccount& GetBankAccount(size_t id) {
+      return *accounts_[id];
+    }
 
     size_t CreateClient(
       std::string name, 
@@ -41,6 +43,7 @@ class Bank {
     }
 
     ClientStorage& GetClients();
+
 
     friend std::ostream& operator<<(std::ostream& out, const Bank& bank) {
       std::cout << "Bank name: " << bank.name_ << " " << std::endl;

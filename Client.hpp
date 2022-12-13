@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CLIENT 
+#define CLIENT
 
 #include <string>
 #include <optional>
@@ -42,4 +43,8 @@ private:
   std::optional<std::string> passport_number_;
 };
 
+std::ostream& operator << (std::ostream& out, const Client& client);
+
 }
+
+#endif // CLIENT_

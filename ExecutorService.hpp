@@ -41,6 +41,24 @@ public:
     if (command == commands::kBankList) {
       BankList(out);
     } 
+    if (command == commands::kFillClient) {
+      FillClient(in, out);
+    }
+    if (command == commands::kListClient) {
+      ListClient(in, out);
+    }
+    if (command == commands::kWithdraw) {
+      Withdraw(in, out);
+    }
+    if (command == commands::kTopUp) {
+      TopUp(in, out);
+    }
+    if (command == commands::kTransfer) {
+      Transfer(in, out);
+    }
+    if (command == commands::kUndo) {
+      Undo(in, out);
+    }
   }
 
 private:
@@ -58,13 +76,13 @@ private:
   }
 
   void CreateClient(std::istream& in, std::ostream& out) {
-    std::cout << "Put bank name:" << std::endl;
+    out << "Put bank name:" << std::endl;
     std::string bank;
     std::cin >> bank;
-    std::cout << "Put client name:" << std::endl;
+    out << "Put client name:" << std::endl;
     std::string name;
     in >> name;
-    std::cout << "Put client last name:" << std::endl;
+    out << "Put client last name:" << std::endl;
     std::string last_name;
     in >> last_name;
     system_.CreateClient(bank, name, last_name);
@@ -72,14 +90,14 @@ private:
   }
 
   void FillClient(std::istream& in, std::ostream& out) {
-    std::cout << "Put address:" << std::endl;
+    out << "Put address:" << std::endl;
     std::string address;
     in >> address;
     std::optional<std::string> addr;
     if (!address.empty()) {
       addr.emplace(std::move(address));
     }
-    std::cout << "Put passport:" << std::endl;
+    out << "Put passport:" << std::endl;
     std::string passport;
     in >> passport;
     std::optional<std::string> pass;
@@ -87,13 +105,58 @@ private:
       pass.emplace(std::move(passport));
     }
   }
+
+  void ListClient(std::istream& in, std::ostream& out) {
+    std::string bank;
+    out << "Put bank name: " << std::endl;
+    in >> bank;
+    auto& clients = system_.GetBankStorage().GetBank(bank).GetClients();
+    for (auto&& client : clients) {
+      out << client;
+    }
+  }
   
+  void Withdraw(std::istream& in, std::ostream& out) {
+    std::string bank;
+    in >> bank;
+    size_t uid;
+    int64_t amount;
+    in >> uid >> amount;
+    system_.MakeWithdraw(bank, uid, amount);
+    out << "Success!";
+  }
+
+  void TopUp(std::istream& in, std::ostream& out) {
+    std::string bank;
+    in >> bank;
+    size_t uid;
+    int64_t amount;
+    in >> uid >> amount;
+    system_.MakeTopUp(bank, uid, amount);
+    out << "Success!";
+  }
+
+  void Transfer(std::istream& in, std::ostream& out) {
+    std::string bank_from, bank_to;
+    in >> bank_from >> bank_to;
+    size_t uid1, uid2;
+    int64_t amount;
+    in >> uid1 >> uid2 >> amount;
+    system_.MakeTransfer(bank_from, uid1, bank_to, uid2, amount);
+  }
+
+  void Undo(std::istream& in, std::ostream& out) {
+    out << "Put transaction id";
+    size_t t_id;
+    in >> t_id;
+    system_.UndoTransfer(t_id);
+  }
+
   void BankList(std::ostream& out) {
-    std::cout << "Bank List:" << std::endl;
+    out << "Bank List:" << std::endl;
     for (auto&&[name, bank_ptr] : system_.GetBankStorage()) {
       out << *bank_ptr << std::endl;
     }
-    
   }
 
   bs::PaymentSystemFacade system_;
