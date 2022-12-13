@@ -46,6 +46,8 @@ namespace bs {
       is_suspicious_ = value;
     }
 
+    virtual void CalculateToDate(size_t date) = 0;
+
    protected:
     size_t client_id_;
     bool is_suspicious_{true};
@@ -70,17 +72,43 @@ namespace bs {
       return amount;
     }
 
+    void CalculateToDate(size_t date) override {
+      int64_t add_sum = 0;
+      while (!deltas_.empty() && deltas_.front().timestamp < date) {
+        auto Delta = deltas_.front();
+        deltas_.pop_front();
+        add_sum += percent_ * ballance_;
+      }
+      ballance_ += add_sum;
+    }
+
     private:
       double percent_;
   };
 
   class DepositBankAccount : public BankAccount {
    public:
+    
     DepositBankAccount(int64_t client_id, int64_t value, size_t final_timestamp) 
       : BankAccount(client_id, value), 
         final_timestamp_(final_timestamp) {}
 
     ~DepositBankAccount() override = default;
+
+    void CalculateToDate(size_t date) override {
+      int64_t add_sum = 0;
+      while (!deltas_.empty() && deltas_.front().timestamp < date) {
+        auto Delta = deltas_.front();
+        deltas_.pop_front();
+        if (ballance_ <= 50000) {
+          add_sum += 0.03 * ballance_;
+        } else if (ballance_ > 50000) {
+          add_sum += 0.035 * ballance_;
+        } else {
+          add_sum += 0.04 * ballance_;
+        }
+      }
+    }
 
     size_t Withdraw(int64_t amount) override { 
       if (GetCurrentTimestamp() <= final_timestamp_) {
@@ -104,18 +132,27 @@ namespace bs {
     CreditBankAccount(int64_t client_id, int64_t value, int64_t limit, int64_t commission) :
       BankAccount(client_id, value), limit_(-limit), commission_(commission) {}
 
-      size_t Withdraw(int64_t amount) override { 
-        if (amount > ballance_ - limit_) {
-          return 0;
-        }
-        ballance_ -= amount;
-        if (ballance_ < 0) {
-          ballance_ -= commission_;
-          deltas_.push_back({GetCurrentTimestamp(), -commission_});
-        }
-        deltas_.push_back({GetCurrentTimestamp(), -amount});
-        return amount;
+    void CalculateToDate(size_t date) override {
+      int64_t add_sum = 0;
+      while (!deltas_.empty() && deltas_.front().timestamp < date) {
+        auto Delta = deltas_.front();
+        deltas_.pop_front();
+        add_sum -= commission_;
       }
+    }
+    
+    size_t Withdraw(int64_t amount) override { 
+      if (amount > ballance_ - limit_) {
+        return 0;
+      }
+      ballance_ -= amount;
+      if (ballance_ < 0) {
+        ballance_ -= commission_;
+        deltas_.push_back({GetCurrentTimestamp(), -commission_});
+      }
+      deltas_.push_back({GetCurrentTimestamp(), -amount});
+      return amount;
+    }
 
     private:
        int64_t limit_;
